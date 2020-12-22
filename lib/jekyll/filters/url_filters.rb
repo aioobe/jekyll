@@ -44,8 +44,7 @@ module Jekyll
       def relativize_url(input)
         return if input.nil?
         input = ensure_leading_slash(input)
-        page_url = @context.registers[:page]["url"]
-        page_dir = Pathname(page_url).parent
+        page_dir = Pathname(@context.registers[:page]["dir"])
         Pathname(input).relative_path_from(page_dir).to_s
       end
 
